@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+   <title>Welcome to Calculate Honey</title>
+    <script type="text/javascript"> 
+    	var beeLv = '';
+      function sum(obj) {
+         var radioButtons = document.getElementsByName("beeLv");
+   			 for(var i = 0; i < radioButtons.length; i++) {
+        	if(radioButtons[i].checked == true) {beeLv = radioButtons[i].value;}
+    		 }
+      var honey1 = document.getElementById("honey1");
+      var honey2 = document.getElementById("honey2");
+      var honey3 = document.getElementById("honey3");
+      var prestige = document.getElementById("prestige");
+      var add10 = (document.getElementsByName("add10")[0].checked == true ? 1.1 : 1);
+      var totalPrestige = 10500;
+      var o1 = 0;
+      var o2 = 0;
+      var o3 = 0;
+      if(beeLv!=''){
+        if(beeLv=='l1'){
+        	if(prestige.value != ""){ totalPrestige =  10500 - parseInt(prestige.value);}
+        }
+        if(beeLv=='l2'){
+        	if(prestige.value == "") {totalPrestige = 7000;} 
+        	else{totalPrestige = 7000- parseInt(prestige.value);}
+         }
+      }
+      if(honey1.value != "") {totalPrestige = totalPrestige - (honey1.value * 40 * add10);}
+      if(honey2.value != "") {totalPrestige = totalPrestige - (honey2.value * 20 * add10);}
+      if(honey3.value != "") {totalPrestige = totalPrestige - (honey3.value * 5 * add10);}
+      o1 = Math.floor(totalPrestige/(40*add10));
+      o2 = Math.floor((totalPrestige - o1*(40*add10)) / ( 20*add10));
+      o3 = Math.ceil((totalPrestige - o1*(40*add10) - o2*20*add10) / Math.floor(5*add10));
+			ohoney1.value = o1;
+      ohoney2.value = o2;
+      ohoney3.value = o3 + " (全黃:" + o1*8 + ")";
+      oprestige.value = totalPrestige;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to Calculate Honey</h1>
+    <fieldset onchange="sum(this);">
+      <legend>What is Your Favorite Pet?</legend>
+      <input type="radio" name="beeLv" value="l1" onchange="sum(this);">初生
+      <input type="radio" name="beeLv" value="l2" onchange ="sum(this);">年幼<br>
+      已有好友度 <input type="text" name="prestige" id = "prestige" onkeyup="sum(this);"><br>
+      <label>人類/馬戲團+10%?</label>  <input type = "radio" name = "add10" onchange="sum(this);"/><br>
+      紫色蜂蜜 <input type="text" name="honey1" id="honey1" onkeyup="sum(this);"><br>
+      藍色蜂蜜 <input type="text" name="honey2" id="honey2" onkeyup="sum(this);"><br>
+      黃色蜂蜜 <input type="text" name="honey3" id="honey3" onkeyup="sum(this);"><br>
+
+    </fieldset>     <br>
+    仍需好友度: <input type='text' id='oprestige' style="border:0px solid white; width:50px" /><br>
+    需要紫色蜂蜜: <input type='text' id='ohoney1' style="border:0px solid white; width:50px" />
+    需要藍色蜂蜜: <input type='text' id='ohoney2' style="border:0px solid white; width:50px" />
+    需要黃色蜂蜜: <input type='text' id='ohoney3' style="border:0px solid white; width:100px" />
+  </body>
+
+</html>
