@@ -1,6 +1,6 @@
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
    <title>Welcome to Calculate Honey</title>
     <script type="text/javascript"> 
     	var beeLv = '';
@@ -13,7 +13,9 @@
       var honey2 = document.getElementById("honey2");
       var honey3 = document.getElementById("honey3");
       var prestige = document.getElementById("prestige");
-      var add10 = (document.getElementsByName("add10")[0].checked == true ? 1.1 : 1);
+      var add101 = (document.getElementsByName("add101")[0].checked == true ? 0.1 : 0);
+      var add102 = (document.getElementsByName("add102")[0].checked == true ? 0.1 : 0);
+      var add10 = 1 + add101 + add102;
       var totalPrestige = 10500;
       var o1 = 0;
       var o2 = 0;
@@ -35,7 +37,7 @@
       o3 = Math.ceil((totalPrestige - o1*(40*add10) - o2*20*add10) / Math.floor(5*add10));
 			ohoney1.value = o1;
       ohoney2.value = o2;
-      ohoney3.value = o3 + " (全黃:" + o1*8 + ")";
+      ohoney3.value = o3 + " (全黃:" + (o1*8 + o2 * 4 + o3) + ")";
       oprestige.value = Math.ceil(totalPrestige);
       }
     </script>
@@ -47,7 +49,8 @@
       <input type="radio" name="beeLv" value="l1" onchange="sum(this);">初生
       <input type="radio" name="beeLv" value="l2" onchange ="sum(this);">年幼<br>
       已有好友度 <input type="text" name="prestige" id = "prestige" onkeyup="sum(this);"><br>
-      <label>人類/馬戲團+10%?</label>  <input type = "radio" name = "add10" onchange="sum(this);"/>Yes<br>
+      人類+10%? <input type = "radio" name = "add101" onchange="sum(this);"/>Yes<br>
+      馬戲團+10%? <input type = "radio" name = "add102" onchange="sum(this);"/>Yes<br>
       紫色蜂蜜 <input type="text" name="honey1" id="honey1" onkeyup="sum(this);"><br>
       藍色蜂蜜 <input type="text" name="honey2" id="honey2" onkeyup="sum(this);"><br>
       黃色蜂蜜 <input type="text" name="honey3" id="honey3" onkeyup="sum(this);"><br>
